@@ -19,16 +19,16 @@ customer_trusted_node1689573329110 = glueContext.create_dynamic_frame.from_catal
     transformation_ctx="customer_trusted_node1689573329110",
 )
 
-# Script generated for node accelerometer_landing
-accelerometer_landing_node1 = glueContext.create_dynamic_frame.from_catalog(
+# Script generated for node accelerometer_trusted
+accelerometer_trusted_node1 = glueContext.create_dynamic_frame.from_catalog(
     database="gwb",
-    table_name="accelerometer_landing",
-    transformation_ctx="accelerometer_landing_node1",
+    table_name="accelerometer_trusted",
+    transformation_ctx="accelerometer_trusted_node1",
 )
 
 # Script generated for node Customer Privacy Filter
-CustomerPrivacyFilter_node1689563552518 = Join.apply(
-    frame1=accelerometer_landing_node1,
+CustomerPrivacyFilter_node1837563552518 = Join.apply(
+    frame1=accelerometer_trusted_node1,
     frame2=customer_trusted_node1689573329110,
     keys1=["user"],
     keys2=["email"],
@@ -37,9 +37,9 @@ CustomerPrivacyFilter_node1689563552518 = Join.apply(
 
 # Script generated for node Drop Fields
 DropFields_node1689563733947 = DropFields.apply(
-    frame=CustomerPrivacyFilter_node1689563552518,
+    frame=CustomerPrivacyFilter_node1837563552518,
     paths=["user", "x", "y", "z", "timestamp"],
-    transformation_ctx="DropFields_node1689563733947",
+    transformation_ctx="DropFields_node16891837563733947",
 )
 
 # Script generated for node S3 bucket
